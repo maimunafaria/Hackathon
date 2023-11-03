@@ -1,9 +1,21 @@
 const { Location } = require('../Model/locationModel');
+const { getAqiData } = require('../apiUtils/aqiAPI');
 
 async function getallCities(req, res) {
-  const cities = await Location.find();
-  console.log(cities);
-  res.json(cities);
+  const data = await Location.find({});
+  const cityNames = data.map(item => item.city_name);
+  console.log(cityNames);
+  const aqiDataRes = [];
+  try{
+    for(let i = 0; i < cityNames.length; i++){
+      let tempcity = cityNames[i].toLowerCase();
+      const aqiData = await getAqiData(tempcity);
+      aqiDataRes.push(aqiData);
+    }
+    res.json(aqiDataRes);
+  }catch(error){
+    console.log(error);
+  }
 }
 
 //sort get all cities by co2 emission and return in descending order with emission
