@@ -2,12 +2,15 @@ const axios = require('axios');
 
 // Define the controller function
 const informations = async (req, res) => {
+  const { bounds, lat, lon } = req.query;
+  url = 'https://api.waqi.info/v2/map/bounds?latlng=39.379436,116.091230,40.235643,116.784382&networks=all&token=demo'
+
   const options = {
     method: 'GET',
     url: 'https://air-quality.p.rapidapi.com/history/airquality',
     params: {
-      lon: '-78.638',
-      lat: '35.779',
+      lon: lat,
+      lat: lon,
     },
     headers: {
       'X-RapidAPI-Key': 'b211884dd3mshbc0fe449b4e2d29p1d9af8jsn54626dbd1398',
