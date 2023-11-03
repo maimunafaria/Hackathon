@@ -4,9 +4,13 @@ import { AppBar, Toolbar, Typography, InputBase, Box, Button } from '@mui/materi
 import SearchIcon from '@mui/icons-material/Search'
 import useStyles from './styles'
 import { Link } from 'react-router-dom';
+import Search from '../Search/Search';
 
 const Header = () => {
   const classes = useStyles()
+  const handleOnSearchChange = (searchData) => {
+    console.log(searchData);
+  }
   return (
     <AppBar position="static">
       <Toolbar className={classes.toolbar}>
@@ -29,11 +33,14 @@ const Header = () => {
             Explore new places
           </Typography>
           {/* <Autocomplete> */}
-            <div className={classes.search}>
+            {/* <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
               <InputBase placeholder="Search..." classes={{ root: classes.inputRoot, input: classes.inputInput }} />
+            </div> */}
+            <div className="mx-auto">
+              <Search onSearchChange={handleOnSearchChange} />
             </div>
           {/* </Autocomplete> */}
         </Box>

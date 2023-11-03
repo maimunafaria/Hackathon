@@ -1,0 +1,12 @@
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo-content {
+    display: flex;
+    align-items: center;
+  }
+ 
+  
