@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Menu, Typography ,Avatar} from 'antd';
 import { Link } from 'react-router-dom';
 import { CloudOutlined, GlobalOutlined, DollarCircleOutlined ,MenuOutlined,EnvironmentOutlined } from '@ant-design/icons';
-import icon from '../../assets/map.png'
+import icon from '../../assets/environVista.png'
 import './Navbar.css'
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
@@ -42,9 +42,7 @@ const Navbar = () => {
   </div>
   
 </div>
-<Button className="menu-control-container" onClick={() => setActiveMenu(!activeMenu)}>
-    <MenuOutlined />
-  </Button>   
+   
       {activeMenu && (
         <Menu theme="dark">
           <Menu.Item icon={<CloudOutlined />}>
