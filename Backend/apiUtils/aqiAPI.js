@@ -47,6 +47,9 @@ async function getAqiData(city) {
     const response = await axios.get(apiUrl);
     let aqi = 0;
     let cityName = '';
+    let co = 0;
+    let h = 0;
+    let no2 = 0;
     let o3 = 0;
     let pm10 = 0;
     let pm25 = 0;
@@ -57,6 +60,24 @@ async function getAqiData(city) {
     if (data.status === 'ok') {
         aqi = data.data.aqi;
         cityName = data.data.city.name;
+        co = data.data.iaqi.co;
+            if(co == undefined){
+                co = 0;
+            }else{
+                co = co.v;
+            }
+        h = data.data.iaqi.h;
+            if(h == undefined){
+                h = 0;
+            }else{
+                h = h.v;
+            }
+        no2 = data.data.iaqi.no2;
+            if(no2 == undefined){
+                no2 = 0;
+            }else{
+                no2 = no2.v;
+            }
         o3 = data.data.iaqi.o3;
             if(o3 == undefined){
                 o3 = 0;
@@ -80,6 +101,9 @@ async function getAqiData(city) {
         const aqiData = {
             aqi,
             cityName,
+            co,
+            h,
+            no2,
             o3,
             pm10,
             pm25,
