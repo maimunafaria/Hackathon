@@ -1,6 +1,6 @@
 import React , {useState, useEffect} from 'react'
 import { CssBaseline, Grid } from '@mui/material'
-import { Header, Home, Map } from './components'
+import { Header, Home, Map ,SEF} from './components'
 import { Route, Routes } from 'react-router-dom';
 import axios from 'axios'
 
@@ -32,6 +32,8 @@ const App = () => {
           setBounds={setBounds}
           coordinates={coordinates}
         />} />
+        <Route path="/map" element={<Map />} />
+        <Route path="/social-economic" element={<SEF />} />
       </Routes>
         </Grid>
       </Grid>
