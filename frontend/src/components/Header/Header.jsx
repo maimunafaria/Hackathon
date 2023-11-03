@@ -3,6 +3,7 @@ import React from 'react'
 import { AppBar, Toolbar, Typography, InputBase, Box, Button } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 import useStyles from './styles'
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const classes = useStyles()
@@ -12,11 +13,16 @@ const Header = () => {
         <Typography variant="h5" className={classes.title}>
           EnviroVista
         </Typography>
-    
-      <Toolbar sx={{ display: 'flex', flexDirection: 'row' }}>   
-        <Button color="inherit">Air Quality Metrics</Button>
-        <Button color="inherit">Social Economic Factors</Button>
-        <Button color="inherit">Map</Button>
+        <Toolbar>
+        <Button color="inherit" component={Link} to="/">
+          Air Quality Metrics
+        </Button>
+        <Button color="inherit" component={Link} to="/social-economic">
+          Social Economic Factors
+        </Button>
+        <Button color="inherit" component={Link} to="/map">
+          Map
+        </Button>
       </Toolbar>
         <Box display="flex">
           <Typography variant="h6" className={classes.title}>
