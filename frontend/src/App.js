@@ -3,9 +3,6 @@ import { CssBaseline, Grid } from '@mui/material'
 import { Header, Home, Map ,SEF,Navbar} from './components'
 import { Route, Routes } from 'react-router-dom';
 import axios from 'axios'
-
-
-import axios from 'axios'
 import './App.css';
 
 
