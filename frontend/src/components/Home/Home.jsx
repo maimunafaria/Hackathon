@@ -98,7 +98,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-       const response = await axios.get('http://localhost:3000/all/informations'); 
+       const response = await axios.get('http://localhost:3000/cty/cities');
        setData(response.data);
        console.log(response.data);
       } catch (error) {
