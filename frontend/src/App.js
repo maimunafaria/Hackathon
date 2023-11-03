@@ -10,10 +10,10 @@ const App = () => {
       <Header />
       <Grid container spacing={3} style={{ width: '100%' }}>
         <Grid item xs={12} md={2} style={{ borderRight: '1px solid #000000' }}>
-         1<Navbar/>
+         <Navbar/>
         </Grid>
         <Grid item xs={12} md={10}>
-          2
+          <h1>Content</h1>
         </Grid>
       </Grid>
     </>
