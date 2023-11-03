@@ -1,42 +1,25 @@
 import { makeStyles } from "@mui/styles";
 
 export default makeStyles(() => ({
-    appBar: {
-        borderRadius: 15,
-        margin: "30px 0",
+    mapContainer: {
+        height: "calc(100vh - 64px)",
+        width: "100%",
+    },
+    paper: {
+        padding: "10px",
         display: "flex",
-        flexDirection: "row",
+        flexDirection: "column",
         justifyContent: "center",
-        alignItems: "center",
+        width: "100px",
     },
-    title: {
-        color: "white",
+    markerContainer: {
+        position: "absolute",
+        transform: "translate(-50%, -50%)",
+        zIndex: 1,
+        "&:hover": { zIndex: 2 },
     },
-    search: {
-        borderRadius: 15,
-        backgroundColor: "rgba(255,255,255, 0.7)",
-        margin: "0 20px",
-        width: "300px",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "flex-start"
-    },
-    searchIcon: {
-        color: "rgba(0,183,255, 1)",
-        marginTop: "0.5rem",
-        marginLeft: "0.5rem"
-    },
-    inputRoot: {
-        color: "primary",
-    },
-    inputInput: {
-        padding: "0.5rem",
-    },
-    button: {
-        marginLeft: "1rem",
-    },
-    toolbar: {
-        display: "flex",
-        justifyContent: "space-between",
+    pointer: {
+        cursor: "pointer",
     },
 }));
+
