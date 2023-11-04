@@ -3,32 +3,21 @@ import axios from 'axios';
 import { Table } from 'antd';
 
 const SEF = () => {
-   // const [data, setData] = useState(null);
-  // const [populationData, setPopulationData] = useState(null);
-  // useEffect(() => {
-  //    const fetchData = async () => {
-  //     try {
-  //      const response = await axios.get('http://localhost:3000/SEF/socialInformations'); 
-  //      setData(response.data);
-  //      console.log(response.data)
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
-  //   fetchData();
-  //   // const fetchData1 = async () => {
-  //   //   try {
-  //   //    const response = await axios.get('http://localhost:3000/SEF/populationGrowth'); 
-  //   //    setData(response.data);
-  //   //    console.log(response.data)
-  //   //   } catch (error) {
-  //   //     console.error(error);
-  //   //   }
-  //   // };
-
-  //   // fetchData1();
-  // }, []);
+   const [data1, setData1] = useState(null);
+  useEffect(() => {
+     const fetchData = async () => {
+      try {
+        console.log("hbxfbxi")
+       const response = await axios.get('http://localhost:3000/SEF/socialInformations'); 
+       console.log("hi")
+       setData1(response.data);
+       console.log(response.data)
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
   const columns = [
     {
       title: 'Rank',

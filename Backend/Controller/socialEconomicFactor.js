@@ -1,38 +1,36 @@
-const axios = require('axios');
+const { Location } = require('../Model/locationModel');
+const { getAqiData } = require('../apiUtils/socioecoAPI');
 
-// Define the controller function
-const informations = async (req, res) => {
-  const options = {
-    method: 'GET',
-    url: 'https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json',
-  };
-
-  try {
-    const response = await axios.request(options);
-    const airQualityData = response.data;
-    res.json(airQualityData); // Send the data as a JSON response
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred while fetching air quality data' });
+async function getallCountries(req, res) {
+  const data = await Location.find({});
+  const countryNames = data.map(item => item.country_name);
+  const aqiDataRes = [];
+  try{
+    for(let i = 0; i < countryNames.length; i++){
+      // let tempcity = countryNames[i].toLowerCase();
+      // console.log(tempcity)
+      const aqiData = await getAqiData(countryNames[i]);
+ //   console.log(aqiData)
+      if(aqiData== undefined|| aqiData== null|| aqiData.aqi=='-'||aqiData.aqi==0){
+        continue;
+      }
+      aqiDataRes.push(aqiData);
+    }
+    console.log("done")
+    return aqiDataRes
+  }catch(error){
+    console.log(error);
   }
-};
-// const populationGrowthInformations = async (req, res) => {
-//   const options = {
-//     method: 'GET',
-//     url: 'https://api.worldbank.org/v2/countriesbd/indicators/SP.POP.TOTL?format=json',
-//   };
+}
 
-//   try {
-//     const response = await axios.request(options);
-//     const airQualityData = response.data;
-//     res.json(airQualityData); // Send the data as a JSON response
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'An error occurred while fetching air quality data' });
-//   }
-// };
-// Export the controller function
+//sort get all cities by co2 emission and return in descending order with emission
+// async function getallCitiesByCo2(req, res) {
+//   const cities = await Location.find().sort({co2Emission: -1});
+//   console.log(cities);
+//   res.json(cities);
+// }
+
 module.exports = {
-  informations,
-  // populationGrowthInformations
+    getallCountries,
+    // getallCitiesByCo2
 };
