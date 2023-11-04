@@ -27,8 +27,16 @@ async function getallCitiesByCo2(req, res) {
   console.log(cities);
   res.json(cities);
 }
+async function getCityByName(req, res) {
+  const { cityName } = req.params;
+  console.log(cityName)
+  const data = await Location.find({ city_name: cityName });
+  console.log(data);
+  return res.status(200).json(data);
+}
 
 module.exports = {
     getallCities,
-    getallCitiesByCo2
+    getallCitiesByCo2,
+    getCityByName
 };

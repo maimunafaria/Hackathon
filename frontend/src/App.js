@@ -37,7 +37,7 @@ const App = () => {
         />} />
         <Route path="/map" element={<Map />} />
         <Route path="/social-economic" element={<SEF />} />
-        <Route path="/specific-city-details" element={<CityDetails />} />
+        <Route path={`/specific-city-details/:cityName`} element={<CityDetails />} />
       </Routes>
         </Grid>
       </Grid>

@@ -3,14 +3,12 @@ import axios from 'axios';
 import { Table } from 'antd';
 
 const SEF = () => {
-   const [data1, setData1] = useState(null);
+   const [data, setData] = useState(null);
   useEffect(() => {
      const fetchData = async () => {
-      try {
-        console.log("hbxfbxi")
+      try { 
        const response = await axios.get('http://localhost:3000/cnt/countries'); 
-       console.log("hi")
-       setData1(response.data);
+       setData(response.data);
        console.log(response)
       } catch (error) {
         console.error(error);
@@ -18,16 +16,15 @@ const SEF = () => {
     };
     fetchData();
   }, []);
-  const columns = [
+  const columns = [{
+    title: 'Country',
+    dataIndex: 'country_name',
+    key: 'country_name',
+  },
     {
-      title: 'Rank',
-      dataIndex: 'rank',
-      key: 'rank',
-    },
-    {
-      title: 'Country',
-      dataIndex: 'country',
-      key: 'country',
+      title: 'Capital',
+      dataIndex: 'city_name',
+      key: 'city_name',
     },
     {
       title: 'Population',
@@ -41,312 +38,59 @@ const SEF = () => {
     },
     {
       title: 'GDP Per Capita',
-      dataIndex: 'gdppercapita',
-      key: 'gdppercapita',
+      dataIndex: 'gdp_per_capita',
+      key: 'gdp_per_capita',
     },
     {
       title: 'GDP Growth',
-      dataIndex: 'gdpgrowth',
-      key: 'gdpgrowth',
+      dataIndex: 'gdp_growth',
+      key: 'gdp_growth',
     },
     {
       title: 'Population Growth',
-      dataIndex: 'populationgrowth',
-      key: 'populationgrowth',
+      dataIndex: 'population_growth',
+      key: 'population_growth',
     },
    
     
   ];
-  const data = [
-    {
-      key: '1',
-      name: 'New York',
-      rank: 1,
-      population: '8.4 million',
-      country: 'United States',
-    },
-    {
-      key: '2',
-      name: 'London',
-      rank: 2,
-      population: '8.9 million',
-      country: 'United Kingdom',
-    },
-    {
-      key: '3',
-      name: 'Tokyo',
-      rank: 3,
-      population: '13.9 million',
-      country: 'Japan',
-    },
-    {
-      key: '1',
-      name: 'New York',
-      rank: 1,
-      population: '8.4 million',
-      country: 'United States',
-    },
-    {
-      key: '2',
-      name: 'London',
-      rank: 2,
-      population: '8.9 million',
-      country: 'United Kingdom',
-    },
-    {
-      key: '3',
-      name: 'Tokyo',
-      rank: 3,
-      population: '13.9 million',
-      country: 'Japan',
-    },
-    {
-      key: '1',
-      name: 'New York',
-      rank: 1,
-      population: '8.4 million',
-      country: 'United States',
-    },
-    {
-      key: '2',
-      name: 'London',
-      rank: 2,
-      population: '8.9 million',
-      country: 'United Kingdom',
-    },
-    {
-      key: '3',
-      name: 'Tokyo',
-      rank: 3,
-      population: '13.9 million',
-      country: 'Japan',
-    },
-    {
-      key: '1',
-      name: 'New York',
-      rank: 1,
-      population: '8.4 million',
-      country: 'United States',
-    },
-    {
-      key: '2',
-      name: 'London',
-      rank: 2,
-      population: '8.9 million',
-      country: 'United Kingdom',
-    },
-    {
-      key: '3',
-      name: 'Tokyo',
-      rank: 3,
-      population: '13.9 million',
-      country: 'Japan',
-    },
-    {
-      key: '1',
-      name: 'New York',
-      rank: 1,
-      population: '8.4 million',
-      country: 'United States',
-    },
-    {
-      key: '2',
-      name: 'London',
-      rank: 2,
-      population: '8.9 million',
-      country: 'United Kingdom',
-    },
-    {
-      key: '3',
-      name: 'Tokyo',
-      rank: 3,
-      population: '13.9 million',
-      country: 'Japan',
-    },
-    {
-      key: '1',
-      name: 'New York',
-      rank: 1,
-      population: '8.4 million',
-      country: 'United States',
-    },
-    {
-      key: '2',
-      name: 'London',
-      rank: 2,
-      population: '8.9 million',
-      country: 'United Kingdom',
-    },
-    {
-      key: '3',
-      name: 'Tokyo',
-      rank: 3,
-      population: '13.9 million',
-      country: 'Japan',
-    },
-    {
-      key: '1',
-      name: 'New York',
-      rank: 1,
-      population: '8.4 million',
-      country: 'United States',
-    },
-    {
-      key: '2',
-      name: 'London',
-      rank: 2,
-      population: '8.9 million',
-      country: 'United Kingdom',
-    },
-    {
-      key: '3',
-      name: 'Tokyo',
-      rank: 3,
-      population: '13.9 million',
-      country: 'Japan',
-    },
-    {
-      key: '1',
-      name: 'New York',
-      rank: 1,
-      population: '8.4 million',
-      country: 'United States',
-    },
-    {
-      key: '2',
-      name: 'London',
-      rank: 2,
-      population: '8.9 million',
-      country: 'United Kingdom',
-    },
-    {
-      key: '3',
-      name: 'Tokyo',
-      rank: 3,
-      population: '13.9 million',
-      country: 'Japan',
-    },
-    {
-      key: '1',
-      name: 'New York',
-      rank: 1,
-      population: '8.4 million',
-      country: 'United States',
-    },
-    {
-      key: '2',
-      name: 'London',
-      rank: 2,
-      population: '8.9 million',
-      country: 'United Kingdom',
-    },
-    {
-      key: '3',
-      name: 'Tokyo',
-      rank: 3,
-      population: '13.9 million',
-      country: 'Japan',
-    },
-    {
-      key: '1',
-      name: 'New York',
-      rank: 1,
-      population: '8.4 million',
-      country: 'United States',
-    },
-    {
-      key: '2',
-      name: 'London',
-      rank: 2,
-      population: '8.9 million',
-      country: 'United Kingdom',
-    },
-    {
-      key: '3',
-      name: 'Tokyo',
-      rank: 3,
-      population: '13.9 million',
-      country: 'Japan',
-    },
-    {
-      key: '1',
-      name: 'New York',
-      rank: 1,
-      population: '8.4 million',
-      country: 'United States',
-    },
-    {
-      key: '2',
-      name: 'London',
-      rank: 2,
-      population: '8.9 million',
-      country: 'United Kingdom',
-    },
-    {
-      key: '3',
-      name: 'Tokyo',
-      rank: 3,
-      population: '13.9 million',
-      country: 'Japan',
-    },
-    {
-      key: '1',
-      name: 'New York',
-      rank: 1,
-      population: '8.4 million',
-      country: 'United States',
-    },
-    {
-      key: '2',
-      name: 'London',
-      rank: 2,
-      population: '8.9 million',
-      country: 'United Kingdom',
-    },
-    {
-      key: '3',
-      name: 'Tokyo',
-      rank: 3,
-      population: '13.9 million',
-      country: 'Japan',
-    },
-    // Add more city data here
-  ]
+ 
   const [pagination, setPagination] = useState({
     current: 1,
-    pageSize: 10, // Number of rows per page
+    pageSize: 10, 
   });
 
   const handleChange = (page, pageSize) => {
-    // Update the current page and page size when the user interacts with the pagination
+    
     setPagination({ current: page, pageSize: pageSize });
   };
 
-  const getCurrentPageData = () => {
-    // Calculate the start and end indices of the current page's data
-    const startIndex = (pagination.current - 1) * pagination.pageSize;
-    const endIndex = startIndex + pagination.pageSize;
-    
-    // Get the data for the current page
-    return data.slice(startIndex, endIndex);
-  };
+  // const getCurrentPageData = () => {
 
-  // Get the data for the current page
-  const currentData = getCurrentPageData();
+  //   const startIndex = (pagination.current - 1) * pagination.pageSize;
+  //   const endIndex = startIndex + pagination.pageSize;
+    
+   
+  //   return data.slice(startIndex, endIndex);
+  // };
+
+
+  // const currentData = getCurrentPageData();
 
   return (
     <Table
       columns={columns}
-      dataSource={currentData}
-      pagination={{
-        current: pagination.current,
-        pageSize: pagination.pageSize,
-        total: data.length, // Total number of rows
-        showSizeChanger: true, // Allow the user to change the page size
-        showQuickJumper: true, // Allow the user to jump to a specific page
-        onChange: handleChange, // Handle page changes
-        onShowSizeChange: handleChange, // Handle page size changes
-      }}
+      dataSource={data}
+     // dataSource={currentData}
+      // pagination={{
+      //   current: pagination.current,
+      //   pageSize: pagination.pageSize,
+      //   total: data.length, // Total number of rows
+      //   showSizeChanger: true, // Allow the user to change the page size
+      //   showQuickJumper: true, // Allow the user to jump to a specific page
+      //   onChange: handleChange, // Handle page changes
+      //   onShowSizeChange: handleChange, // Handle page size changes
+      // }}
     />
   );
 };

@@ -5,5 +5,5 @@ const cityController = require('../Controller/cityController')
 
 router.get('/cities',  cityController.getallCities)
 router.get('/cities/co2',  cityController.getallCitiesByCo2)
-
+router.get('/city/:cityName', cityController.getCityByName)
 module.exports = router
