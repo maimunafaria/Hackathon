@@ -1,56 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; 
-import { Card, Typography, Divider } from 'antd';
+import { Card,Button, Row, Col } from 'antd';
 
 const Home = () => {
   const [data, setData] = useState(null);
-
-  const citiesData = [
-    {
-      name: 'New York',
-      rank: 1,
-      population: '8.4 million',
-      country: 'United States',
-      AQ:49
-    },
-    {
-      name: 'London',
-      rank: 2,
-      population: '8.9 million',
-      country: 'United Kingdom',
-      AQ:205
-    },
-    {
-      name: 'Tokyo',
-      rank: 3,
-      population: '13.9 million',
-      country: 'Japan',
-      AQ:100
-    },
-    {
-      name: 'Tokyo',
-      rank: 3,
-      population: '13.9 million',
-      country: 'Japan',
-      AQ:300
-    },
-    {
-      name: 'Tokyo',
-      rank: 3,
-      population: '13.9 million',
-      country: 'Japan',
-      AQ:130
-    },
-    {
-      name: 'Tokyo',
-      rank: 3,
-      population: '13.9 million',
-      country: 'Japan',
-      AQ: 199
-    },
-    // Add more city data here
-  ];
-  const CityCard = ({ name, rank, population, country, AQ }) => {
+  const [sortedDesdata, setSortedDesdata] = useState(null);
+  const [showAll, setShowAll] = useState(false);
+  const CityCard = ({ name, number,  AQ }) => {
     // Determine the background color based on the AQ value
     let backgroundColor;
     let titleColor = 'white';
@@ -83,14 +39,13 @@ const Home = () => {
   
     return (
       <Card
-        title={`Rank ${rank}: ${name}`}
+      title={`Rank ${number}: ${name}`}
         style={cardStyle}
         headStyle={titleStyle} // Set the background color for the title
       >
         <p><strong>City Name:</strong> {name}</p>
-        <p><strong>Population:</strong> {population}</p>
-        <p><strong>Country:</strong> {country}</p>
-        <p><strong>Air Quality:</strong> {AQ}</p>
+      
+        <p><strong>AQI:</strong> {AQ}</p>
       </Card>
     );
   };
@@ -98,53 +53,74 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-       const response = await axios.get('http://localhost:3000/cty/cities');
-       setData(response.data);
-       console.log(response.data);
+        const response = await axios.get('http://localhost:3000/cty/cities');
+        if (response.data) {
+          // Create a Set to track unique city names
+          const uniqueCityNames = new Set();
+  
+          // Filter and sort the data based on aqi and unique city names
+          const sortedData = response.data
+            .filter(city => {
+              if (!uniqueCityNames.has(city.cityName)) {
+                uniqueCityNames.add(city.cityName);
+                return true;
+              }
+              return false;
+            })
+            .sort((a, b) => a.aqi - b.aqi);
+  
+          setData(sortedData);
+           setSortedDesdata([...sortedData].reverse());
+          console.log(sortedData);
+        }
       } catch (error) {
         console.error(error);
       }
     };
-
+  
     fetchData();
   }, []);
+  
 
-  const cardsInARow = 5;
-
+  const cardsInARow = showAll ? data.length : 10;
   return (
     <div>
-      <h2 style={{ marginLeft: '1.5%' }}>Top ten most polluted Cities</h2>
+    <h2 style={{ marginLeft: '1.5%' }}>Top ten most polluted Cities</h2>  
+    {sortedDesdata && (
+        <Row gutter={[16, 16]}>
+          {Array.from({ length: cardsInARow }).map((_, index) => (
+            <Col key={index} span={12}>
+              <CityCard
+              number={index + 1}
+                name={sortedDesdata[index].cityName}
+                AQ={sortedDesdata[index].aqi}
+              />
+            </Col>
+          ))}
+        </Row>
+      )}
+      {sortedDesdata && !showAll && (
+        <Button onClick={() => setShowAll(true)}>See More</Button>
+      )}
+    <h2 style={{ marginLeft: '1.5%' }}>Top ten most cleanest Cities</h2>
+      {data && (
+        <Row gutter={[16, 16]}>
+          {Array.from({ length: cardsInARow }).map((_, index) => (
+            <Col key={index} span={12}>
+              <CityCard
+              number={index + 1}
+                name={data[index].cityName}
+                AQ={data[index].aqi}
+              />
+            </Col>
+          ))}
+        </Row>
+      )}
+      {data && !showAll && (
+        <Button onClick={() => setShowAll(true)}>See More</Button>
+      )}
+    
 
-      {Array.from({ length: Math.ceil(citiesData.length / cardsInARow) }).map((_, rowIndex) => (
-        <div key={rowIndex} style={{ display: 'flex' }}>
-          {citiesData.slice(rowIndex * cardsInARow, (rowIndex + 1) * cardsInARow).map((city, index) => (
-            <CityCard
-              key={index}
-              name={city.name}
-              rank={city.rank}
-              population={city.population}
-              country={city.country}
-              AQ={city.AQ}
-            />
-          ))}
-        </div>
-      ))}
-    
-      <h2 style={{ marginLeft: '1.5%' }}>Top ten most cleanest Cities</h2>
-    
-      {Array.from({ length: Math.ceil(citiesData.length / cardsInARow) }).map((_, rowIndex) => (
-        <div key={rowIndex} style={{ display: 'flex' }}>
-          {citiesData.slice(rowIndex * cardsInARow, (rowIndex + 1) * cardsInARow).map((city, index) => (
-            <CityCard
-              key={index}
-              name={city.name}
-              rank={city.rank}
-              population={city.population}
-              country={city.country}
-            />
-          ))}
-        </div>
-      ))}
     </div>
     
     

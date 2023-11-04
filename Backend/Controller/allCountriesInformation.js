@@ -82,8 +82,8 @@ const getCityRanking = async (req, res) => {
             try {
               // Save the data to the database
               const location =await Location.create(locationdata);
-              console.log(`Data saved to the database for ${country.value}`);
-              console.log(location);
+            //  console.log(`Data saved to the database for ${country.value}`);
+              // console.log(location);
               // res.json(locationdata);
             } catch (error) {
               console.error(`Error while saving the data for ${country.value} to the database:`, error);

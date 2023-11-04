@@ -36,9 +36,9 @@ const SEF = () => {
       key: 'rank',
     },
     {
-      title: 'City Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: 'Country',
+      dataIndex: 'country',
+      key: 'country',
     },
     {
       title: 'Population',
@@ -46,10 +46,27 @@ const SEF = () => {
       key: 'population',
     },
     {
-      title: 'Country',
-      dataIndex: 'country',
-      key: 'country',
+      title: 'GDP',
+      dataIndex: 'gdp',
+      key: 'gdp',
     },
+    {
+      title: 'GDP Per Capita',
+      dataIndex: 'gdppercapita',
+      key: 'gdppercapita',
+    },
+    {
+      title: 'GDP Growth',
+      dataIndex: 'gdpgrowth',
+      key: 'gdpgrowth',
+    },
+    {
+      title: 'Population Growth',
+      dataIndex: 'populationgrowth',
+      key: 'populationgrowth',
+    },
+   
+    
   ];
   const data = [
     {

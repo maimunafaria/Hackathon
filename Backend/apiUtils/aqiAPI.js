@@ -69,8 +69,12 @@ async function getAqiData(city) {
             longitude
         }
 
+        //console.log(aqiData);
+
         return aqiData;
-    } 
+    } else {
+     //   console.error('API request failed with status:', data.status);
+    }
 }
 
 module.exports = {
