@@ -10,6 +10,9 @@ async function getallCities(req, res) {
     for(let i = 0; i < cityNames.length; i++){
       let tempcity = cityNames[i].toLowerCase();
       const aqiData = await getAqiData(tempcity);
+      if(aqiData == undefined || aqiData == null){
+        continue;
+      }
       aqiDataRes.push(aqiData);
     }
     res.json(aqiDataRes);

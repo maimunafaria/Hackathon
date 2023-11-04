@@ -14,6 +14,7 @@ const App = () => {
   useEffect(() => {
     if (bounds) {
       console.log(bounds)
+      console.log(coordinates)
     }
   }, [bounds])
 
