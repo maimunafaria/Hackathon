@@ -20,12 +20,17 @@ async function getallCities(req, res) {
     console.log(error);
   }
 }
-
 //sort get all cities by co2 emission and return in descending order with emission
 async function getallCitiesByCo2(req, res) {
-  const cities = await Location.find().sort({co2Emission: -1});
-  console.log(cities);
-  res.json(cities);
+  const { cityName } = req.params;
+  let tempcity = cityName.toLowerCase();
+  console.log(tempcity)
+  try{
+  const aqiData = await getAqiData(tempcity);
+  res.json(aqiData);
+  }catch{
+    console.log(error);
+  }
 }
 async function getCityByName(req, res) {
   const { cityName } = req.params;
@@ -34,6 +39,7 @@ async function getCityByName(req, res) {
   console.log(data);
   return res.status(200).json(data);
 }
+
 
 module.exports = {
     getallCities,
