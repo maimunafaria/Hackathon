@@ -8,10 +8,10 @@ const SEF = () => {
      const fetchData = async () => {
       try {
         console.log("hbxfbxi")
-       const response = await axios.get('http://localhost:3000/SEF/socialInformations'); 
+       const response = await axios.get('http://localhost:3000/cnt/countries'); 
        console.log("hi")
        setData1(response.data);
-       console.log(response.data)
+       console.log(response)
       } catch (error) {
         console.error(error);
       }
