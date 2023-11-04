@@ -111,12 +111,11 @@ async function getAqiData(city) {
             longitude
         }
 
-        console.log(aqiData);
+        //console.log(aqiData);
 
         return aqiData;
     } else {
-        console.error('API request failed with status:', data.status);
-        return aqiData;
+     //   console.error('API request failed with status:', data.status);
     }
 }
 
