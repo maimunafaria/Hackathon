@@ -1,27 +1,6 @@
 const axios = require('axios');
 const { Location } = require('../Model/locationModel');
 
-// const city = 'london'
-//   const options = {
-//     method: 'GET',
-//     url: 'https://api.api-ninjas.com/v1/airquality?city=' + city,
-//   headers: {
-//     'X-Api-Key': apiKey
-//   },
-//   };
- 
-//   try {
-//     const response = await axios.request(options);
-//     res.json(response.data);
-//     // response.data.forEach(country => {
-//     //   console.log(`${country.value}`);
-//     // });
-//   } catch (error) {
-//     console.error(error);
-//   }
-
-// const axios = require('axios');
-
 const getCityRanking = async (req, res) => {
   // const apiKey = 'AoQ6ZbD2MMl0tirgw8JHMg==1zoOAz54zbHOJyoR';
 

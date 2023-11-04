@@ -23,14 +23,7 @@ async function getallCountries(req, res) {
   }
 }
 
-//sort get all cities by co2 emission and return in descending order with emission
-// async function getallCitiesByCo2(req, res) {
-//   const cities = await Location.find().sort({co2Emission: -1});
-//   console.log(cities);
-//   res.json(cities);
-// }
 
 module.exports = {
     getallCountries,
-    // getallCitiesByCo2
 };

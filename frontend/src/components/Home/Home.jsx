@@ -7,29 +7,29 @@ const Home = () => {
   const [sortedDesdata, setSortedDesdata] = useState(null);
   const [showAll, setShowAll] = useState(false);
   const CityCard = ({ name, number,  AQ }) => {
-    // Determine the background color based on the AQ value
+   
     let backgroundColor;
     let titleColor = 'white';
 
     if (AQ >= 0 && AQ <= 50) {
-      backgroundColor = 'rgb(0, 190, 80)'; // Green
+      backgroundColor = 'rgb(0, 190, 80)'; 
     } else if (AQ >= 51 && AQ <= 100) {
-      backgroundColor = 'rgb(255, 200, 0)'; // Yellow
+      backgroundColor = 'rgb(255, 200, 0)'; 
     } else if (AQ >= 101 && AQ <= 150) {
-      backgroundColor = 'rgb(255, 145, 0)'; // Light Orange
+      backgroundColor = 'rgb(255, 145, 0)'; 
     } else if (AQ >= 151 && AQ <= 200) {
-      backgroundColor = '#D0312D'; // Light Red
+      backgroundColor = '#D0312D'; 
     } else if (AQ >= 201 && AQ <= 300) {
-      backgroundColor = 'rgb(180, 80, 180)'; // Light Purple
+      backgroundColor = 'rgb(180, 80, 180)'; 
     } else {
       backgroundColor = '#800000';
-      titleColor = 'white'; // Red for values 301 and above
+      titleColor = 'white'; 
     }
   
     const cardStyle = {
       marginBottom: 16,
       marginLeft: 10,
-      border: '1px solid black', // Set the border style
+      border: '1px solid black', 
     };
   
     const titleStyle = {
@@ -41,7 +41,7 @@ const Home = () => {
       <Card
       title={`Rank ${number}: ${name}`}
         style={cardStyle}
-        headStyle={titleStyle} // Set the background color for the title
+        headStyle={titleStyle} 
       >
         <p><strong>City Name:</strong> {name}</p>
       
@@ -55,10 +55,10 @@ const Home = () => {
       try {
         const response = await axios.get('http://localhost:3000/cty/cities');
         if (response.data) {
-          // Create a Set to track unique city names
+          
           const uniqueCityNames = new Set();
   
-          // Filter and sort the data based on aqi and unique city names
+        
           const sortedData = response.data
             .filter(city => {
               if (!uniqueCityNames.has(city.cityName)) {

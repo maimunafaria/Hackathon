@@ -36,7 +36,6 @@ const CityDetails = () => {
     return <div>Loading...</div>;
   }
 
-  // Dummy data for the pie chart
   const pieChartData = {
     labels: ['N2O', 'H', 'CO'],
     datasets: [
