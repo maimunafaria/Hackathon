@@ -21,7 +21,7 @@
 //   return (
 //     <div className={classes.mapContainer}>
 //       <ReactBingmaps
-//         bingmapKey= "ApEOgxgDlaHfNKwVkVJ_Y0mW4lfIHGmalZe2dsx9Td5g8F8eIoNNHo5l2oYAx5gX"
+//         bingmapKey= ""
 //         center={[latitude, longitude]}
 //         zoom={10}
 //         pushPins={[
